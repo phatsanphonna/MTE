@@ -1,0 +1,19 @@
+name: MTE
+main: mte.main
+class: mtetest.main
+author: Phatsanphon Nakaranurak, Marudet Boonseng, Nantipat Laingern
+version: 1.0
+
+commands:
+  teleport:
+    usage: /<command>
+    description: To teleport to other players
+  mte:
+    usage: /<command>
+    description: Shows help menu
+  execute:
+    usage: /<command>
+    description: To kill yourself
+  keepInv:
+    usage: /<command>
+    description: To toggle keepInventory gamerule without permissions!
