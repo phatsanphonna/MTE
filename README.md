@@ -5,7 +5,7 @@
 
 ### เกี่ยวกับ
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<br>โปรเจคนี้เป็นงานกลุ่มของวิชาค้นคว้าอิสระ หรือก็คือ IS โดยเราเจอปัญหาเวลาคนเล่นเกม Minecraft แล้วเบื่อเวลาที่ต้องเดินทางไปในที่ไกล ๆ เราเลยคิดโปรเจคนี้มา
 
 ```markdown
 Syntax highlighted code block
