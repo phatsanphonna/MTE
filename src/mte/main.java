@@ -33,7 +33,7 @@ public class main extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "follow for more plugin update:");
-        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "https://github.com/ssuniie/NokPlugin/releases");
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.AQUA + "https://ssuniie.github.io/MTE/");
     }
 
     @Override
@@ -43,7 +43,7 @@ public class main extends JavaPlugin implements Listener {
             Player player = (Player) sender;
             if (label.equalsIgnoreCase("mte")) {
                 if (args.length == 0) {
-                    player.sendMessage(ChatColor.WHITE + "============================================");
+                    player.sendMessage(ChatColor.WHITE + "==============================================");
                     player.sendMessage((ChatColor.AQUA + ">>> ") + (ChatColor.BLUE + "/teleport") + (ChatColor.WHITE + " - ")
                             + (ChatColor.WHITE + "To teleport to other players"));
                     player.sendMessage((ChatColor.AQUA + ">>> ") + (ChatColor.BLUE + "/execute") + (ChatColor.WHITE + " - ")
@@ -59,35 +59,30 @@ public class main extends JavaPlugin implements Listener {
                     player.sendMessage((ChatColor.WHITE + "You are using") + " " + (ChatColor.AQUA + pluginName) + " "
                             + (ChatColor.GREEN + pluginVersion) + (ChatColor.GRAY + " by ") + authors);
                 } else if (args[0].equalsIgnoreCase("github")) {
-                    player.sendMessage((ChatColor.WHITE + "You are using") + " " + pluginName + " "
-                            + (ChatColor.GREEN + pluginVersion) + (ChatColor.GRAY + " by ") + authors);
+                    player.sendMessage(tpPrefix + (ChatColor.WHITE + "Follow on GitHub for more updates"));
+                    player.sendMessage(tpPrefix + (ChatColor.GREEN + "https://ssuniie.github.io/MTE/"));
                 }
             }
 
             if (label.equalsIgnoreCase("teleport")) {
                 if (args.length == 0) {
                     player.sendMessage(tpPrefix + (ChatColor.WHITE + "Just type /teleport <username>"));
-                }
-                else if (args.length == 1) {
+                } else if (args.length == 1) {
                     Player target = player.getServer().getPlayer(args[0]);
                     Location targetLocation = target.getLocation();
 
                     if (player != target) {
-                        if (target != null) {
-                            player.teleport(target);
-                            player.sendMessage(tpPrefix + (ChatColor.WHITE + "You have been teleported to") + " "
-                                    + (ChatColor.GREEN + target.getName()) + (ChatColor.WHITE + "."));
-                            target.sendMessage(tpPrefix + (ChatColor.GREEN + player.getName())
-                                    + (ChatColor.WHITE + " been teleported to you."));
-                            target.playSound(targetLocation, Sound.ENTITY_CREEPER_PRIMED, 100.0f, 1.0f);
-                        }
-                        else {
-                            player.sendMessage(tpPrefix + (ChatColor.WHITE + "Can not find any players")); // If 'possible'
-                        }
+                        player.teleport(target);
+                        player.sendMessage(tpPrefix + (ChatColor.WHITE + "You have been teleported to") + " "
+                                + (ChatColor.GREEN + target.getName()) + (ChatColor.WHITE + "."));
+                        target.sendMessage(tpPrefix + (ChatColor.GREEN + player.getName())
+                                + (ChatColor.WHITE + " been teleported to you."));
+                        target.playSound(targetLocation, Sound.ENTITY_CREEPER_PRIMED, 100.0f, 1.0f);
+                    } else {
+                        player.sendMessage(tpPrefix + (ChatColor.WHITE + "Can not find any players.")); // If 'possible'
                     }
-                    else {
-                        player.sendMessage(tpPrefix + (ChatColor.WHITE + "You can not teleport to yourself!"));
-                    }
+                } else {
+                    player.sendMessage(tpPrefix + (ChatColor.WHITE + "You can not teleport to yourself!"));
                 }
             }
 
@@ -97,10 +92,13 @@ public class main extends JavaPlugin implements Listener {
 
                 if (keepInvGameRuleCheck == false) {
                     player.sendMessage(tpPrefix + (ChatColor.WHITE + "You can not self-execute because your ")
-                            + (ChatColor.GREEN + "keepInventory gamerule ") + (ChatColor.WHITE + "is not enable."));
+                            + (ChatColor.GREEN + "gamerule of keepInventory ") + (ChatColor.WHITE + "is not enable."));
+                    player.sendMessage(tpPrefix + (ChatColor.WHITE + "To turn on keepInventory gamerule"));
+                    player.sendMessage(tpPrefix + (ChatColor.WHITE + "type ") + (ChatColor.GREEN + "/gamerule keepInventory true ")
+                            + (ChatColor.WHITE + "in console."));
                 } else {
                     player.setHealth(0);
-                    player.sendMessage(tpPrefix + (ChatColor.WHITE + "You died..."));
+                    player.sendMessage(tpPrefix + (ChatColor.WHITE + "You have been executed."));
                 }
             }
 
@@ -118,6 +116,7 @@ public class main extends JavaPlugin implements Listener {
                             + (ChatColor.GREEN + "keepInventory gamerule"));
                 }
             }
+
             /*if (command.getName().equalsIgnoreCase("back")) {
                 UUID playerUUID = player.getUniqueId();
                 boolean onDeath = onDeath();

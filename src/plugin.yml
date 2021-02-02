@@ -1,8 +1,7 @@
 name: MTE
 main: mte.main
-class: mtetest.main
 author: Phatsanphon Nakaranurak, Marudet Boonseng, Nantipat Laingern
-version: 1.0
+version: 1.0.2
 
 commands:
   teleport:
