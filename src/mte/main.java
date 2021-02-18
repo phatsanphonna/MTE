@@ -12,11 +12,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class main extends JavaPlugin implements Listener {
 
-    public static String pluginVersion = "v1.0";
+    public static String pluginVersion = "v1.0.3";
     public static String pluginName = "Modded Teleporting Experience";
     public static String tpPrefix = (ChatColor.BLUE + "[") + (ChatColor.AQUA + "MTE")
             + (ChatColor.BLUE + "]") + (ChatColor.RESET + " ");
-    String authors = (ChatColor.GOLD + "Phatsanphon Nakaranurak, Marudet Boonseng, Nantipat Laingein");
+    String authors = (ChatColor.GOLD + "MTE TEAM");
 
     @Override
     public void onEnable() {
@@ -79,13 +79,10 @@ public class main extends JavaPlugin implements Listener {
                                 + (ChatColor.WHITE + " been teleported to you."));
                         target.playSound(targetLocation, Sound.ENTITY_CREEPER_PRIMED, 100.0f, 1.0f);
                     } else {
-                        player.sendMessage(tpPrefix + (ChatColor.WHITE + "Can not find any players.")); // If 'possible'
+                        player.sendMessage(tpPrefix + (ChatColor.WHITE + "You can not teleport to yourself!"));
                     }
-                } else {
-                    player.sendMessage(tpPrefix + (ChatColor.WHITE + "You can not teleport to yourself!"));
                 }
             }
-
             if (command.getName().equalsIgnoreCase("execute")) {
                 World world = Bukkit.getServer().getWorld("world");
                 boolean keepInvGameRuleCheck = world.getGameRuleValue(GameRule.KEEP_INVENTORY);
@@ -98,10 +95,10 @@ public class main extends JavaPlugin implements Listener {
                             + (ChatColor.WHITE + "in console."));
                 } else {
                     player.setHealth(0);
-                    player.sendMessage(tpPrefix + (ChatColor.WHITE + "You have been executed."));
+                    player.sendMessage(tpPrefix + (ChatColor.WHITE + "You have been executed"));
                 }
             }
-
+            /*
             if (command.getName().equalsIgnoreCase("keepInv")) {
                 World world = Bukkit.getServer().getWorld("world");
                 boolean keepInvGameRuleCheck = world.getGameRuleValue(GameRule.KEEP_INVENTORY);
@@ -115,9 +112,10 @@ public class main extends JavaPlugin implements Listener {
                     Bukkit.broadcastMessage(tpPrefix + (ChatColor.AQUA + player.getName()) + (ChatColor.WHITE + " disabled ")
                             + (ChatColor.GREEN + "keepInventory gamerule"));
                 }
-            }
+            } */
 
-            /*if (command.getName().equalsIgnoreCase("back")) {
+            /*
+            if (command.getName().equalsIgnoreCase("back")) {
                 UUID playerUUID = player.getUniqueId();
                 boolean onDeath = onDeath();
                 if (onDeath == false) {
@@ -155,4 +153,3 @@ public class main extends JavaPlugin implements Listener {
         event.setQuitMessage((ChatColor.BLUE + "Goodbye! ") + (ChatColor.GREEN + player.getDisplayName()));
     }
 }
-

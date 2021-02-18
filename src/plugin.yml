@@ -1,7 +1,7 @@
 name: MTE
 main: mte.main
-author: Phatsanphon Nakaranurak, Marudet Boonseng, Nantipat Laingern
-version: 1.0.2
+author: MTE TEAM
+version: 1.0.4
 
 commands:
   teleport:
@@ -13,6 +13,3 @@ commands:
   execute:
     usage: /<command>
     description: To kill yourself
-  keepInv:
-    usage: /<command>
-    description: To toggle keepInventory gamerule without permissions!
